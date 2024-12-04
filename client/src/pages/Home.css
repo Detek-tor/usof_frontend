@@ -1,0 +1,489 @@
+/* src/pages/Home.css */
+
+.home-container {
+  padding: 2rem;
+  text-align: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.post-item {
+  background-color: var(--background-color);
+  border: 1px solid #e0e0e0; /* Можно заменить на var(--border-color) */
+  border-radius: 8px;
+  width: 80%;
+  max-width: 600px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, color 0.3s;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s forwards;
+  position: relative;
+}
+
+.post-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.post-item h3 {
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+}
+
+.post-item p {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.post-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.publish-date {
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+.likes-dislikes {
+  display: flex;
+  gap: 0.5rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.likes, .dislikes {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.3s;
+  font-size: 0.9rem;
+}
+
+.likes {
+  color: #28a745; /* Зеленый для лайков */
+}
+
+.dislikes {
+  color: #dc3545; /* Красный для дизлайков */
+}
+
+.likes:hover {
+  color: #218838;
+}
+
+.dislikes:hover {
+  color: #c82333;
+}
+
+/* Секция комментариев */
+.comments-section {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.comments-section h4 {
+  margin-bottom: 1rem;
+  color: #333333;
+}
+
+.comment-item {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.comment-item p {
+  margin: 0;
+  color: #555555;
+}
+
+.comment-item small {
+  display: block;
+  margin-top: 0.5rem;
+  color: #777777;
+}
+
+.comment-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.comment-form input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.comment-form button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.comment-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Анимация появления постов */
+@keyframes fadeInUp {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .post-item {
+      width: 95%;
+      padding: 1rem;
+  }
+
+  .post-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+  }
+
+  .likes-dislikes {
+      gap: 0.5rem;
+  }
+}
+
+.likes.active {
+  color: #218838; /* Зеленый для активного лайка */
+  cursor: default;
+}
+
+.dislikes.active {
+  color: #c82333; /* Красный для активного дизлайка */
+  cursor: default;
+}
+
+.likes, .dislikes {
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.likes:hover:not(.active) {
+  color: #28a745; /* Зеленый при наведении, если не активен */
+}
+
+.dislikes:hover:not(.active) {
+  color: #dc3545; /* Красный при наведении, если не активен */
+}
+
+/* Категории */
+.categories {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.category-badge {
+  background-color: #17a2b8;
+  color: #ffffff;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+/* Фильтр категорий */
+.category-filter {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.category-filter label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.category-select {
+  width: 200px;
+  padding: 0.5rem;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Новые стили для кнопки фильтра */
+.filter-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.filter-button {
+  padding: 0.5rem 1rem;
+  background-color: #28a745; /* Зеленый цвет кнопки */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.filter-button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.filter-button:active {
+  transform: scale(0.95);
+}
+
+.filter-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.5);
+}
+
+.edit-button {
+  margin-left: 0.5rem;
+  padding: 0.3rem 0.6rem;
+  background-color: #007bff; /* Синий цвет для редактирования */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+/* Стили для кнопок в постах */
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Расстояние между кнопками */
+}
+
+.like-button, .dislike-button, .edit-button, .admin-button {
+  padding: 0.3rem 0.6rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  flex: none;
+  font-size: 0.9rem;
+}
+
+/* Кнопки лайка и дизлайка */
+.like-button,
+.dislike-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--link-color);
+  transition: color 0.3s;
+}
+
+.like-button:hover, .dislike-button:hover, .edit-button:hover, .admin-button:hover {
+  background-color: var(--primary-color-dark);
+  transform: scale(1.05);
+}
+
+.like-button:active, .dislike-button:active, .edit-button:active, .admin-button:active {
+  transform: scale(0.95);
+}
+
+.like-button.active, .dislike-button.active {
+  background-color: var(--success-color);
+}
+
+.delete-button {
+  padding: 0.2rem 0.4rem; /* Уменьшенные отступы */
+  font-size: 0.8rem; /* Меньший размер шрифта */
+  background-color: var(--danger-color);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: var(--danger-color-dark);
+}
+
+.status-button {
+  background-color: var(--warning-color);
+}
+
+.status-button:hover {
+  background-color: var(--warning-color-dark);
+}
+
+/* Стили для выпадающего меню */
+.dropdown-menu {
+  position: absolute;
+  top: 2.5rem; /* Смещение ниже кнопки */
+  right: 0;
+  background-color: var(--background-color);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ниже кнопки */
+  min-width: 150px;
+}
+
+.dropdown-menu.active {
+  display: block;
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-color);
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001; /* Обеспечивает поверх выпадающего меню */
+}
+
+/* Светлая тема */
+.light-theme .dropdown-toggle {
+  color: #000000; /* Темный цвет для светлой темы */
+}
+
+/* Темная тема */
+.dark-theme .dropdown-toggle {
+  color: #ffffff; /* Светлый цвет для темной темы */
+}
+
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  background-color: var(--background-color);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #000;
+  text-decoration: none;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.like-button,
+.dislike-button,
+.delete-button {
+  width: 50px;
+  height: 30px;
+  padding: 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button {
+  width: 100px;
+  height: 30px;
+}
+
+.post-actions {
+  flex-wrap: wrap;
+}
+
+.post-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.comments-section h4 {
+  text-align: center;
+}
+
+.post-header {
+  align-items: center;
+}
